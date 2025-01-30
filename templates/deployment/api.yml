@@ -42,3 +42,25 @@ spec:
                 secretKeyRef:
                   name: meili-default-admin-api-key
                   key: meili-default-admin-api-key
+            - name: COMMONBASE_PLATFORM_URL
+              value: "{{ .Values.api.COMMONBASE_PLATFORM_URL }}"
+            - name: SUPABASE_URL
+              value: "{{ .Values.api.SUPABASE_URL }}"
+            - name: SUPABASE_ANON_KEY
+              value: "{{ .Values.api.SUPABASE_ANON_KEY }}"
+            - name: SUPABASE_SERVICE_ROLE_KEY
+              value: "{{ .Values.api.SUPABASE_SERVICE_ROLE_KEY }}"
+            - name: SUPABASE_COMMONBASE_TABLE
+              value: "{{ .Values.api.SUPABASE_COMMONBASE_TABLE }}"
+            - name: SUPABASE_COMMONBASE_RANDOM_RPC
+              value: "{{ .Values.api.SUPABASE_COMMONBASE_RANDOM_RPC }}"
+            - name: MATCH_THRESHOLD_DEFAULT
+              value: "{{ .Values.api.MATCH_THRESHOLD_DEFAULT }}"
+            - name: MATCH_LIMIT_DEFAULT
+              value: "{{ .Values.api.MATCH_LIMIT_DEFAULT }}"
+            - name: MEILI_HOST
+              value: "{{ .Values.api.MEILI_HOST }}"
+            - name: MEILI_DEFAULT_SEARCH_UID
+              value: "{{ .Values.api.MEILI_DEFAULT_SEARCH_UID }}"
+            - name: MEILI_DEFAULT_ADMIN_UID
+              value: "{{ .Values.api.MEILI_DEFAULT_ADMIN_UID }}"

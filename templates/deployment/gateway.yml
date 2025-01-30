@@ -27,3 +27,21 @@ spec:
                 secretKeyRef:
                   name: service-auth-token
                   key: service-auth-token
+            - name: GO_ENV
+              value: "{{ .Values.gateway.GO_ENV }}"
+            - name: SERVER_PORT
+              value: "{{ .Values.gateway.SERVER_PORT }}"
+            - name: AUTH_PAT_CONTROL_CHAR
+              value: "{{ .Values.gateway.AUTH_PAT_CONTROL_CHAR }}"
+            - name: KEYCLOAK_URL
+              value: "{{ .Values.gateway.KEYCLOAK_URL }}"
+            - name: KEYCLOAK_REALM
+              value: "{{ .Values.gateway.KEYCLOAK_REALM }}"
+            - name: PUBLIC_GATEWAY_URL
+              value: "{{ .Values.gateway.PUBLIC_GATEWAY_URL }}"
+            - name: EXTERNAL_API_KEY_SERVICE_URL
+              value: "{{ .Values.gateway.EXTERNAL_API_KEY_SERVICE_URL }}"
+            - name: RECORD_SERVICE_URL
+              value: "{{ .Values.gateway.RECORD_SERVICE_URL }}"
+            - name: USER_SERVICE_URL
+              value: "{{ .Values.gateway.USER_SERVICE_URL }}"

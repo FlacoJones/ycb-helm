@@ -37,3 +37,19 @@ spec:
                 secretKeyRef:
                   name: service-auth-token
                   key: service-auth-token
+            - name: NATS_URL
+              value: "{{ .Values.externalapikey.NATS_URL }}"
+            - name: NATS_CLIENT_NAME
+              value: "{{ .Values.externalapikey.NATS_CLIENT_NAME }}"
+            - name: KEYCLOAK_URL
+              value: "{{ .Values.externalapikey.KEYCLOAK_URL }}"
+            - name: KEYCLOAK_REALM
+              value: "{{ .Values.externalapikey.KEYCLOAK_REALM }}"
+            - name: PUBLIC_GATEWAY_URL
+              value: "{{ .Values.externalapikey.PUBLIC_GATEWAY_URL }}"
+            - name: USER_SERVICE_URL
+              value: "{{ .Values.externalapikey.USER_SERVICE_URL }}"
+            - name: RECORD_SERVICE_URL
+              value: "{{ .Values.externalapikey.RECORD_SERVICE_URL }}"
+            - name: EXTERNAL_API_KEY_SERVICE_URL
+              value: "{{ .Values.externalapikey.EXTERNAL_API_KEY_SERVICE_URL }}"

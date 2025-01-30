@@ -47,3 +47,7 @@ spec:
                 secretKeyRef:
                   name: cloudfront-private-key-path
                   key: cloudfront-private-key-path
+            - name: RECORD_IMAGE_BUCKET
+              value: "{{ .Values.record.RECORD_IMAGE_BUCKET }}"
+            - name: AWS_REGION
+              value: "{{ .Values.record.AWS_REGION }}"

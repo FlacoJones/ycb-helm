@@ -27,3 +27,11 @@ spec:
                 secretKeyRef:
                   name: database-url
                   key: database-url
+            - name: GATEWAY_URL
+              value: "{{ .Values.user.GATEWAY_URL }}"
+            - name: USER_SERVICE_URL
+              value: "{{ .Values.user.USER_SERVICE_URL }}"
+            - name: KEYCLOAK_URL
+              value: "{{ .Values.user.KEYCLOAK_URL }}"
+            - name: KEYCLOAK_REALM
+              value: "{{ .Values.user.KEYCLOAK_REALM }}"
