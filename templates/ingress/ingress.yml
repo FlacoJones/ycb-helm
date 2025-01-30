@@ -14,6 +14,44 @@ spec:
     - host: {{.Values.ingress.host}}
       http:
         paths:
+    - host: {{.Values.ingress.drmHost}}
+      http:
+        paths:
+          - path: /api(/|$)(.*)
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: {{.Values.api.service.name}}
+                port:
+                  number: {{.Values.api.service.port}}
+          - path: /external-api-key(/|$)(.*)
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: {{.Values.service1.service.name}}
+                port:
+                  number: {{.Values.service1.service.port}}
+          - path: /gateway(/|$)(.*)
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: {{.Values.service2.service.name}}
+                port:
+                  number: {{.Values.service2.service.port}}
+          - path: /record(/|$)(.*)
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: {{.Values.service3.service.name}}
+                port:
+                  number: {{.Values.service3.service.port}}
+          - path: /user(/|$)(.*)
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: {{.Values.service4.service.name}}
+                port:
+                  number: {{.Values.service4.service.port}}
           - path: /()(.*)
             pathType: ImplementationSpecific
             backend:
