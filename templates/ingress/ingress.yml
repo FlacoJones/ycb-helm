@@ -11,9 +11,6 @@ metadata:
 spec:
   ingressClassName: {{.Values.ingress.ingressClassName}}
   rules:
-    - host: {{.Values.ingress.host}}
-      http:
-        paths:
     - host: {{.Values.ingress.drmHost}}
       http:
         paths:
@@ -28,30 +25,30 @@ spec:
             pathType: ImplementationSpecific
             backend:
               service:
-                name: {{.Values.service1.service.name}}
+                name: {{.Values.externalapikey.service.name}}
                 port:
-                  number: {{.Values.service1.service.port}}
+                  number: {{.Values.externalapikey.service.port}}
           - path: /gateway(/|$)(.*)
             pathType: ImplementationSpecific
             backend:
               service:
-                name: {{.Values.service2.service.name}}
+                name: {{.Values.gateway.service.name}}
                 port:
-                  number: {{.Values.service2.service.port}}
+                  number: {{.Values.gateway.service.port}}
           - path: /record(/|$)(.*)
             pathType: ImplementationSpecific
             backend:
               service:
-                name: {{.Values.service3.service.name}}
+                name: {{.Values.record.service.name}}
                 port:
-                  number: {{.Values.service3.service.port}}
+                  number: {{.Values.record.service.port}}
           - path: /user(/|$)(.*)
             pathType: ImplementationSpecific
             backend:
               service:
-                name: {{.Values.service4.service.name}}
+                name: {{.Values.user.service.name}}
                 port:
-                  number: {{.Values.service4.service.port}}
+                  number: {{.Values.user.service.port}}
           - path: /()(.*)
             pathType: ImplementationSpecific
             backend:
