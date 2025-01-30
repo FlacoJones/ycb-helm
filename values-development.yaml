@@ -82,7 +82,7 @@ record:
   image:
     repository: alo42/record
     pullPolicy: Always
-    tag: development-1.0.0
+    tag: development-1.0.1
   service:
     name: record
     port: 9002
