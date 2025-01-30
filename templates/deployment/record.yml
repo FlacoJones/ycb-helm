@@ -90,8 +90,6 @@ spec:
               value: "{{ .Values.record.KEYCLOAK_URL }}"
             - name: KEYCLOAK_REALM
               value: "{{ .Values.record.KEYCLOAK_REALM }}"
-            - name: EXTERNAL_API_KEY_ENCRYPTION_KEY
-              value: "{{ .Values.record.EXTERNAL_API_KEY_ENCRYPTION_KEY }}"
             - name: SEARCH_DEFAULT_MATCH_LIMIT
               value: "{{ .Values.record.SEARCH_DEFAULT_MATCH_LIMIT }}"
             - name: SEARCH_DEFAULT_MATCH_THRESHOLD
