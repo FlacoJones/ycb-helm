@@ -6,3 +6,5 @@ auth.yml
 .env
 
 secrets.yml
+secrets.yaml
+private-values.yaml
