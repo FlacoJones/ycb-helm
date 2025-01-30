@@ -67,6 +67,8 @@ spec:
                 secretKeyRef:
                   name: supabase-service-role-key
                   key: supabase-service-role-key
+            - name: PORT
+              value: "{{ .Values.api.PORT }}"
             - name: COMMONBASE_PLATFORM_URL
               value: "{{ .Values.api.COMMONBASE_PLATFORM_URL }}"
             - name: SUPABASE_ANON_KEY
