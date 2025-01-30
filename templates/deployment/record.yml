@@ -57,6 +57,11 @@ spec:
                 secretKeyRef:
                   name: service-auth-token
                   key: service-auth-token
+            - name: EXTERNAL_API_KEY_ENCRYPTION_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: external-api-encryption-key
+                  key: external-api-encryption-key
             - name: GO_ENV
               value: "{{ .Values.record.GO_ENV }}"
             - name: SERVER_PORT

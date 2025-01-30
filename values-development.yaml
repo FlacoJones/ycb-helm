@@ -18,27 +18,17 @@ api:
   image:
     repository: alo42/api
     pullPolicy: Always
-    tag: development-1.0.0
+    tag: development-1.0.2
   service:
     name: api
     port: 3001
   PORT: 3001
-  COMMONBASE_PLATFORM_URL: "https://development.yourcommonbase.com/gateway"
-  SUPABASE_URL: "https://mock.supabase.co"
-  SUPABASE_ANON_KEY: "mock-anon-key"
-  SUPABASE_SERVICE_ROLE_KEY: "mock-service-role-key"
-  SUPABASE_COMMONBASE_TABLE: "mock_commonbase_table"
-  SUPABASE_COMMONBASE_RANDOM_RPC: "mock_random_rpc"
-  SENTRY_AUTH_TOKEN: "mock-sentry-auth-token"
-  MATCH_THRESHOLD_DEFAULT: "0.8"
-  MATCH_LIMIT_DEFAULT: "10"
-  UPSERT_PASSWORD: "mock-upsert-password"
-  FTS_INDEX_NAME: "mock_fts_index"
-  MEILI_HOST: "https://mock.meili.co"
-  MEILI_DEFAULT_SEARCH_API_KEY: "mock-search-api-key"
-  MEILI_DEFAULT_SEARCH_UID: "mock_search_uid"
-  MEILI_DEFAULT_ADMIN_API_KEY: "mock-admin-api-key"
-  MEILI_DEFAULT_ADMIN_UID: "mock_admin_uid"
+  COMMONBASE_PLATFORM_URL: 'https://development.yourcommonbase.com/gateway'
+  SUPABASE_COMMONBASE_TABLE: "ycb_staging"
+  SUPABASE_COMMONBASE_RANDOM_RPC: "random_rows_ycb_staging"
+  MATCH_THRESHOLD_DEFAULT: "0.2"
+  MATCH_LIMIT_DEFAULT: "3"
+  FTS_INDEX_NAME: ycb_fts_staging
 gateway:
   name: gateway
   replicas: 1
@@ -96,11 +86,9 @@ record:
   NATS_SAVE_OPENAI_SUBJECT: "embed.save.openai"
   KEYCLOAK_URL: "keycloak:8080"
   KEYCLOAK_REALM: ycb
-  EXTERNAL_API_KEY_ENCRYPTION_KEY: "mock-external-api-key-encryption-key"
   SEARCH_DEFAULT_MATCH_LIMIT: "10"
   SEARCH_DEFAULT_MATCH_THRESHOLD: "0.2"
   PUBLIC_GATEWAY_URL: "https://development.yourcommonbase.com/gateway"
-  DATABASE_URL: "postgres://postgres:commonbase@postgres:5432/commonbase?sslmode=disable"
   USER_SERVICE_URL: "user:5002"
   RECORD_SERVICE_URL: "record:5001"
   NATS_CREATE_IMAGE_OPENAI_SUBJECT: "embed.create.img.openai"
@@ -135,7 +123,7 @@ keycloak:
   service:
     name: keycloak
     port: 8080
-  KC_DB: postgres
+  KC_DB: keycloak
   KC_DB_SCHEMA: keycloak
   KC_PROXY: edge
   KC_HTTP_ENABLED: "true"

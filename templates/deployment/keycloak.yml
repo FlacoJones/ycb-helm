@@ -30,8 +30,8 @@ spec:
             - name: KC_DB_PASSWORD
               valueFrom:
                 secretKeyRef:
-                  name: kc-deb-password
-                  key: kc-deb-password
+                  name: kc-db-password
+                  key: kc-db-password
             - name: KEYCLOAK_ADMIN_PASSWORD
               valueFrom:
                 secretKeyRef:

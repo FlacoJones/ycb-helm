@@ -32,35 +32,52 @@ spec:
                 secretKeyRef:
                   name: upsert-password
                   key: upsert-password
+            - name: MEILI_HOST
+              valueFrom:
+                secretKeyRef:
+                  name: meili-host
+                  key: meili-host
             - name: MEILI_DEFAULT_SEARCH_API_KEY
               valueFrom:
                 secretKeyRef:
                   name: meili-default-search-api-key
                   key: meili-default-search-api-key
+            - name: MEILI_DEFAULT_SEARCH_UID
+              valueFrom:
+                secretKeyRef:
+                  name: meili-default-search-uid
+                  key: meili-default-search-uid
             - name: MEILI_DEFAULT_ADMIN_API_KEY
               valueFrom:
                 secretKeyRef:
                   name: meili-default-admin-api-key
                   key: meili-default-admin-api-key
+            - name: MEILI_DEFAULT_ADMIN_UID
+              valueFrom:
+                secretKeyRef:
+                  name: meili-default-admin-uid
+                  key: meili-default-admin-uid
+            - name: SUPABASE_URL
+              valueFrom:
+                secretKeyRef:
+                  name: supabase-url
+                  key: supabase-url
+            - name: SUPABASE_SERVICE_ROLE_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: supabase-service-role-key
+                  key: supabase-service-role-key
             - name: COMMONBASE_PLATFORM_URL
               value: "{{ .Values.api.COMMONBASE_PLATFORM_URL }}"
-            - name: SUPABASE_URL
-              value: "{{ .Values.api.SUPABASE_URL }}"
             - name: SUPABASE_ANON_KEY
               value: "{{ .Values.api.SUPABASE_ANON_KEY }}"
-            - name: SUPABASE_SERVICE_ROLE_KEY
-              value: "{{ .Values.api.SUPABASE_SERVICE_ROLE_KEY }}"
-            - name: SUPABASE_COMMONBASE_TABLE
-              value: "{{ .Values.api.SUPABASE_COMMONBASE_TABLE }}"
-            - name: SUPABASE_COMMONBASE_RANDOM_RPC
-              value: "{{ .Values.api.SUPABASE_COMMONBASE_RANDOM_RPC }}"
             - name: MATCH_THRESHOLD_DEFAULT
               value: "{{ .Values.api.MATCH_THRESHOLD_DEFAULT }}"
             - name: MATCH_LIMIT_DEFAULT
               value: "{{ .Values.api.MATCH_LIMIT_DEFAULT }}"
-            - name: MEILI_HOST
-              value: "{{ .Values.api.MEILI_HOST }}"
-            - name: MEILI_DEFAULT_SEARCH_UID
-              value: "{{ .Values.api.MEILI_DEFAULT_SEARCH_UID }}"
-            - name: MEILI_DEFAULT_ADMIN_UID
-              value: "{{ .Values.api.MEILI_DEFAULT_ADMIN_UID }}"
+            - name: FTS_INDEX_NAME
+              value: "{{ .Values.api.FTS_INDEX_NAME }}"
+            - name: SUPABASE_COMMONBASE_TABLE
+              value: "{{ .Values.api.SUPABASE_COMMONBASE_TABLE }}"
+            - name: SUPABASE_COMMONBASE_RANDOM_RPC
+              value: "{{ .Values.api.SUPABASE_COMMONBASE_RANDOM_RPC }}"
