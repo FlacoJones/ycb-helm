@@ -53,3 +53,7 @@ spec:
               value: "{{ .Values.externalapikey.RECORD_SERVICE_URL }}"
             - name: EXTERNAL_API_KEY_SERVICE_URL
               value: "{{ .Values.externalapikey.EXTERNAL_API_KEY_SERVICE_URL }}"
+            - name: GO_ENV
+              value: "{{ .Values.externalapikey.GO_ENV }}"
+            - name: SERVER_PORT
+              value: "{{ .Values.externalapikey.SERVER_PORT }}"

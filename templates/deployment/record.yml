@@ -47,7 +47,55 @@ spec:
                 secretKeyRef:
                   name: cloudfront-private-key-path
                   key: cloudfront-private-key-path
+            - name: DATABASE_URL
+              valueFrom:
+                secretKeyRef:
+                  name: database-url
+                  key: database-url
+            - name: SERVICE_AUTH_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  name: service-auth-token
+                  key: service-auth-token
+            - name: GO_ENV
+              value: "{{ .Values.record.GO_ENV }}"
+            - name: SERVER_PORT
+              value: "{{ .Values.record.SERVER_PORT }}"
             - name: RECORD_IMAGE_BUCKET
               value: "{{ .Values.record.RECORD_IMAGE_BUCKET }}"
             - name: AWS_REGION
               value: "{{ .Values.record.AWS_REGION }}"
+            - name: NATS_URL
+              value: "{{ .Values.record.NATS_URL }}"
+            - name: NATS_CLIENT_NAME
+              value: "{{ .Values.record.NATS_CLIENT_NAME }}"
+            - name: NATS_DLQ
+              value: "{{ .Values.record.NATS_DLQ }}"
+            - name: NATS_CREATE_STREAM
+              value: "{{ .Values.record.NATS_CREATE_STREAM }}"
+            - name: NATS_SAVE_STREAM
+              value: "{{ .Values.record.NATS_SAVE_STREAM }}"
+            - name: NATS_SAVE_OPENAI_SUBJECT
+              value: "{{ .Values.record.NATS_SAVE_OPENAI_SUBJECT }}"
+            - name: NATS_CREATE_TEXT_OPENAI_SUBJECT
+              value: "{{ .Values.record.NATS_CREATE_TEXT_OPENAI_SUBJECT }}"
+            - name: NATS_CREATE_IMG_OPENAI_SUBJECT
+              value: "{{ .Values.record.NATS_CREATE_IMG_OPENAI_SUBJECT }}"
+            - name: KEYCLOAK_URL
+              value: "{{ .Values.record.KEYCLOAK_URL }}"
+            - name: KEYCLOAK_REALM
+              value: "{{ .Values.record.KEYCLOAK_REALM }}"
+            - name: EXTERNAL_API_KEY_ENCRYPTION_KEY
+              value: "{{ .Values.record.EXTERNAL_API_KEY_ENCRYPTION_KEY }}"
+            - name: SEARCH_DEFAULT_MATCH_LIMIT
+              value: "{{ .Values.record.SEARCH_DEFAULT_MATCH_LIMIT }}"
+            - name: SEARCH_DEFAULT_MATCH_THRESHOLD
+              value: "{{ .Values.record.SEARCH_DEFAULT_MATCH_THRESHOLD }}"
+            - name: PUBLIC_GATEWAY_URL
+              value: "{{ .Values.record.PUBLIC_GATEWAY_URL }}"
+            - name: USER_SERVICE_URL
+              value: "{{ .Values.record.USER_SERVICE_URL }}"
+            - name: RECORD_SERVICE_URL
+              value: "{{ .Values.record.RECORD_SERVICE_URL }}"
+            - name: NATS_CREATE_IMAGE_OPENAI_SUBJECT
+              value: "{{ .Values.record.NATS_CREATE_IMAGE_OPENAI_SUBJECT }}"

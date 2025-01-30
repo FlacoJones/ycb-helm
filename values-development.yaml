@@ -58,7 +58,6 @@ gateway:
   EXTERNAL_API_KEY_SERVICE_URL: "external-api-key:5000"
   RECORD_SERVICE_URL: "record:5000"
   USER_SERVICE_URL: "user:5000"
-  SERVICE_AUTH_TOKEN: "provided in secret in deployment"
 user:
   name: user
   replicas: 1
@@ -71,7 +70,6 @@ user:
     port: 5000
   GO_ENV: development
   SERVER_PORT: 5000
-  DATABASE_URL: "provided by secret"
   GATEWAY_URL: gateway:5000
   USER_SERVICE_URL: user:5000
   KEYCLOAK_URL: keycloak:8080 
@@ -86,13 +84,27 @@ record:
   service:
     name: record
     port: 9002
+  GO_ENV: development
+  SERVER_PORT: 9002
   RECORD_IMAGE_BUCKET: 'ycb-development'
   AWS_REGION: us-east-2
-  AWS_ACCESS_KEY_ID: "provided in secret in deployment"
-  AWS_SECRET_ACCESS_KEY: "provided in secret in deployment"
-  CLOUDFRONT_URL: "provided in secret in deployment"
-  CLOUDFRONT_PRIVATE_KEY_ID: "provided in secret in deployment"
-  CLOUDFRONT_PRIVATE_KEY_PATH: "provided in secret in deployment"
+  NATS_URL: "nats://nats:4222"
+  NATS_CLIENT_NAME: "record"
+  NATS_DLQ: "dlq"
+  NATS_CREATE_STREAM: "NATS_CREATE_STREAM"
+  NATS_SAVE_STREAM: "NATS_SAVE_STREAM"
+  NATS_SAVE_OPENAI_SUBJECT: "embed.save.openai"
+  KEYCLOAK_URL: "keycloak:8080"
+  KEYCLOAK_REALM: ycb
+  EXTERNAL_API_KEY_ENCRYPTION_KEY: "mock-external-api-key-encryption-key"
+  SEARCH_DEFAULT_MATCH_LIMIT: "10"
+  SEARCH_DEFAULT_MATCH_THRESHOLD: "0.2"
+  PUBLIC_GATEWAY_URL: "http://gateway:5000"
+  DATABASE_URL: "postgres://postgres:commonbase@postgres:5432/commonbase?sslmode=disable"
+  USER_SERVICE_URL: "user:5000"
+  RECORD_SERVICE_URL: "record:5000"
+  NATS_CREATE_IMAGE_OPENAI_SUBJECT: "embed.create.img.openai"
+  NATS_CREATE_TEXT_OPENAI_SUBJECT: "embed.create.text.openai"
 externalapikey:
   name: externalapikey
   replicas: 1
@@ -107,11 +119,8 @@ externalapikey:
   SERVER_PORT: 5000
   NATS_URL: "nats://nats:4222"
   NATS_CLIENT_NAME: "external-api-key"
-  DATABASE_URL: "provided in secret in deployment"
   KEYCLOAK_URL: "keycloak:8080"
   KEYCLOAK_REALM: ycb
-  EAK_ENCRYPTION_KEY: "provided in secret in deployment"
-  SERVICE_AUTH_TOKEN: "provided in secret in deployment"
   PUBLIC_GATEWAY_URL: "https://development.yourcommonbase.com/gateway"
   USER_SERVICE_URL: "user:5000"
   RECORD_SERVICE_URL: "record:5000"
@@ -128,12 +137,9 @@ keycloak:
     port: 9003
   KC_DB: postgres
   KC_DB_SCHEMA: keycloak
-  KC_DB_URL: "provided in secret in deployment"
-  KC_DB_PASSWORD: "provided in secret in deployment"
   KC_PROXY: edge
   KC_HTTP_ENABLED: "true"
   KEYCLOAK_ADMIN: admin
-  KEYCLOAK_ADMIN_PASSWORD: "provided in secret in deployment"
 ingress:
   name: ycb-development
   ingressClassName: nginx

@@ -27,6 +27,10 @@ spec:
                 secretKeyRef:
                   name: database-url
                   key: database-url
+            - name: GO_ENV
+              value: "{{ .Values.user.GO_ENV }}"
+            - name: SERVER_PORT
+              value: "{{ .Values.user.SERVER_PORT }}"
             - name: GATEWAY_URL
               value: "{{ .Values.user.GATEWAY_URL }}"
             - name: USER_SERVICE_URL
