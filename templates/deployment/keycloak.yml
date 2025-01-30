@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{.Values.keycloak.name}}
+  namespace: {{.Values.namespace}}
+  labels:
+    app: {{.Values.keycloak.name}}
+spec:
+  replicas: {{.Values.keycloak.replicas}}
+  selector:
+    matchLabels:
+      app: {{.Values.keycloak.name}}
+  template:
+    metadata:
+      labels:
+        app: {{.Values.keycloak.name}}
+    spec:
+      containers:
+        - name: {{.Values.keycloak.name}}
+          image: "{{ .Values.keycloak.image.repository }}:{{ .Values.keycloak.image.tag }}"
+          imagePullPolicy: {{.Values.keycloak.image.pullPolicy}}
+          ports:
+            - containerPort: {{.Values.keycloak.service.port}}
+          env:
+            - name: KC_DB_URL
+              valueFrom:
+                secretKeyRef:
+                  name: kc-db-url
+                  key: kc-db-url
+            - name: KC_DB_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: kc-deb-password
+                  key: kc-deb-password
+            - name: KEYCLOAK_ADMIN_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: kc-db-admin-password
+                  key: kc-db-admin-password

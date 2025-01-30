@@ -21,3 +21,19 @@ spec:
           imagePullPolicy: {{.Values.externalapikey.image.pullPolicy}}
           ports:
             - containerPort: {{.Values.externalapikey.service.port}}
+          env:
+            - name: DATABASE_URL
+              valueFrom:
+                secretKeyRef:
+                  name: database-url
+                  key: database-url
+            - name: EAK_ENCRYPTION_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: eak-encryption-key
+                  key: eak-encryption-key
+            - name: SERVICE_AUTH_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  name: service-auth-token
+                  key: service-auth-token

@@ -21,3 +21,24 @@ spec:
           imagePullPolicy: {{.Values.api.image.pullPolicy}}
           ports:
             - containerPort: {{.Values.api.service.port}}
+          env:
+            - name: SENTRY_AUTH_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  name: sentry-auth-token
+                  key: sentry-auth-token
+            - name: UPSERT_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: upsert-password
+                  key: upsert-password
+            - name: MEILI_DEFAULT_SEARCH_API_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: meili-default-search-api-key
+                  key: meili-default-search-api-key
+            - name: MEILI_DEFAULT_ADMIN_API_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: meili-default-admin-api-key
+                  key: meili-default-admin-api-key

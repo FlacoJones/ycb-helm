@@ -21,3 +21,9 @@ spec:
           imagePullPolicy: {{.Values.user.image.pullPolicy}}
           ports:
             - containerPort: {{.Values.user.service.port}}
+          env:
+            - name: DATABASE_URL
+              valueFrom:
+                secretKeyRef:
+                  name: database-url
+                  key: database-url

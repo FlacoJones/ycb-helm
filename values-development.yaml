@@ -23,6 +23,22 @@ api:
     name: api
     port: 3001
   PORT: 3001
+  COMMONBASE_PLATFORM_URL: "https://development.yourcommonbase.com/gateway"
+  SUPABASE_URL: ""
+  SUPABASE_ANON_KEY: ""
+  SUPABASE_SERVICE_ROLE_KEY: ""
+  SUPABASE_COMMONBASE_TABLE: ""
+  SUPABASE_COMMONBASE_RANDOM_RPC: ""
+  SENTRY_AUTH_TOKEN: "provided in secret in deployment"
+  MATCH_THRESHOLD_DEFAULT: ""
+  MATCH_LIMIT_DEFAULT: ""
+  UPSERT_PASSWORD: "provided in secret in deployment"
+  FTS_INDEX_NAME: ""
+  MEILI_HOST: ""
+  MEILI_DEFAULT_SEARCH_API_KEY: "provided in secret in deployment"
+  MEILI_DEFAULT_SEARCH_UID: ""
+  MEILI_DEFAULT_ADMIN_API_KEY: "provided in secret in deployment"
+  MEILI_DEFAULT_ADMIN_UID: ""
 gateway:
   name: gateway
   replicas: 1
@@ -32,8 +48,17 @@ gateway:
     tag: development-1.0.0
   service:
     name: gateway
-    port: 9000
-  PORT: 9000
+    port: 5000
+  GO_ENV: development
+  SERVER_PORT: 5000
+  AUTH_PAT_CONTROL_CHAR: ycb
+  KEYCLOAK_URL: "keycloak:8080"
+  KEYCLOAK_REALM: ycb
+  PUBLIC_GATEWAY_URL: "https://development.yourcommonbase.com/gateway"
+  EXTERNAL_API_KEY_SERVICE_URL: "external-api-key:5000"
+  RECORD_SERVICE_URL: "record:5000"
+  USER_SERVICE_URL: "user:5000"
+  SERVICE_AUTH_TOKEN: "provided in secret in deployment"
 user:
   name: user
   replicas: 1
@@ -43,8 +68,14 @@ user:
     tag: development-1.0.0
   service:
     name: user
-    port: 9001
-  PORT: 9001
+    port: 5000
+  GO_ENV: development
+  SERVER_PORT: 5000
+  DATABASE_URL: "provided by secret"
+  GATEWAY_URL: gateway:5000
+  USER_SERVICE_URL: user:5000
+  KEYCLOAK_URL: keycloak:8080 
+  KEYCLOAK_REALM: ycb
 record:
   name: record
   replicas: 1
@@ -55,7 +86,13 @@ record:
   service:
     name: record
     port: 9002
-  PORT: 9002
+  RECORD_IMAGE_BUCKET: 'ycb-development'
+  AWS_REGION: us-east-2
+  AWS_ACCESS_KEY_ID: "provided in secret in deployment"
+  AWS_SECRET_ACCESS_KEY: "provided in secret in deployment"
+  CLOUDFRONT_URL: "provided in secret in deployment"
+  CLOUDFRONT_PRIVATE_KEY_ID: "provided in secret in deployment"
+  CLOUDFRONT_PRIVATE_KEY_PATH: "provided in secret in deployment"
 externalapikey:
   name: externalapikey
   replicas: 1
@@ -65,8 +102,38 @@ externalapikey:
     tag: development-1.0.0
   service:
     name: externalapikey
+    port: 5000
+  GO_ENV: development
+  SERVER_PORT: 5000
+  NATS_URL: "nats://nats:4222"
+  NATS_CLIENT_NAME: "external-api-key"
+  DATABASE_URL: "provided in secret in deployment"
+  KEYCLOAK_URL: "keycloak:8080"
+  KEYCLOAK_REALM: ycb
+  EAK_ENCRYPTION_KEY: "provided in secret in deployment"
+  SERVICE_AUTH_TOKEN: "provided in secret in deployment"
+  PUBLIC_GATEWAY_URL: "https://development.yourcommonbase.com/gateway"
+  USER_SERVICE_URL: "user:5000"
+  RECORD_SERVICE_URL: "record:5000"
+  EXTERNAL_API_KEY_SERVICE_URL: "external-api-key:5000"
+keycloak:
+  name: keycloak
+  replicas: 1
+  image:
+    repository: keycloak/keycloak
+    pullPolicy: Always
+    tag: latest
+  service:
+    name: keycloak
     port: 9003
-  PORT: 9003
+  KC_DB: postgres
+  KC_DB_SCHEMA: keycloak
+  KC_DB_URL: "provided in secret in deployment"
+  KC_DB_PASSWORD: "provided in secret in deployment"
+  KC_PROXY: edge
+  KC_HTTP_ENABLED: "true"
+  KEYCLOAK_ADMIN: admin
+  KEYCLOAK_ADMIN_PASSWORD: "provided in secret in deployment"
 ingress:
   name: ycb-development
   ingressClassName: nginx

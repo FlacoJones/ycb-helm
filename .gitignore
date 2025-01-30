@@ -2,3 +2,7 @@
 auth.json
 auth.yml
 .DS_Store
+
+.env
+
+secrets.yml

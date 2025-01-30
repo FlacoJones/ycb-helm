@@ -21,3 +21,9 @@ spec:
           imagePullPolicy: {{.Values.gateway.image.pullPolicy}}
           ports:
             - containerPort: {{.Values.gateway.service.port}}
+          env:
+            - name: SERVICE_AUTH_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  name: service-auth-token
+                  key: service-auth-token

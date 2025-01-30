@@ -21,3 +21,29 @@ spec:
           imagePullPolicy: {{.Values.record.image.pullPolicy}}
           ports:
             - containerPort: {{.Values.record.service.port}}
+          env:
+            - name: AWS_ACCESS_KEY_ID
+              valueFrom:
+                secretKeyRef:
+                  name: aws-access-key-id
+                  key: aws-access-key-id
+            - name: AWS_SECRET_ACCESS_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: aws-secret-access-key
+                  key: aws-secret-access-key
+            - name: CLOUDFRONT_URL
+              valueFrom:
+                secretKeyRef:
+                  name: cloudfront-url
+                  key: cloudfront-url
+            - name: CLOUDFRONT_PRIVATE_KEY_ID
+              valueFrom:
+                secretKeyRef:
+                  name: cloudfront-private-key-id
+                  key: cloudfront-private-key-id
+            - name: CLOUDFRONT_PRIVATE_KEY_PATH
+              valueFrom:
+                secretKeyRef:
+                  name: cloudfront-private-key-path
+                  key: cloudfront-private-key-path
