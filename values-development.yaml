@@ -1,0 +1,18 @@
+# You are editing:
+# DEVELOPMENT
+namespace: development
+frontend:
+  name: frontend
+  replicas: 1
+  image:
+    repository: openq/openq-drm
+    pullPolicy: Always
+    tag: development-1.5.822
+  service:
+    name: frontend
+    port: 3000
+  PORT: 3000
+ingress:
+  name: ycb-development
+  ingressClassName: nginx
+  host: development.yourcommonbase.com

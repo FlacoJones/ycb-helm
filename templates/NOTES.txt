@@ -1,0 +1,5 @@
+CONGRATULATIONS!
+
+You have just installed or upgraded the full OpenQ stack.
+
+Enjoy!

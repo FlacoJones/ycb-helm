@@ -1,0 +1,62 @@
+name: Deploy
+
+on:
+  push:
+    branches-ignore:
+      - "**"
+    tags:
+      - "**development**"
+      - "**production**"
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      - name: Extract environment from tag
+        id: extract_environment
+        run: |
+          if [[ "${{ github.ref_name }}" == *"development"* ]]; then
+            ENVIRONMENT="development"
+          elif [[ "${{ github.ref_name }}" == *"production"* ]]; then
+            ENVIRONMENT="production"
+          else
+            echo "Invalid environment"
+            exit 1
+          fi
+
+          echo "ENVIRONMENT=$ENVIRONMENT" >> $GITHUB_ENV
+      - name: Install Helm
+        id: install-helm
+        uses: azure/setup-helm@v3
+        with:
+          version: 3.11.0
+      - name: Configure kubectl
+        run: |
+          mkdir -p ~/.kube
+          echo ${{ secrets.KUBE_CONFIG }} | base64 --decode > $HOME/.kube/config
+      - name: Switch Contexts
+        run: |
+          kubectl config use-context ${{ env.ENVIRONMENT }}
+      - name: Configure AWS Credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: us-east-2
+      - name: Designate cluster
+        run: |
+          if [[ "${{ env.ENVIRONMENT }}" == "development" ]]; then
+            echo "CLUSTER_NAME=ycb-dev" >> $GITHUB_ENV
+          elif [[ "${{ env.ENVIRONMENT }}" == "production" ]]; then
+            echo "CLUSTER_NAME=ycb" >> $GITHUB_ENV
+          fi
+      - name: Echo cluster name
+        run: |
+          echo $CLUSTER_NAME
+      - name: Update kube config
+        run: aws eks update-kubeconfig --name ${{env.CLUSTER_NAME}} --region us-east-2
+      - name: Helm upgrade
+        run: helm upgrade -n ${{ env.ENVIRONMENT }} -f values-${{ env.ENVIRONMENT }}.yaml openq-${{ env.ENVIRONMENT }} .
+# git add . && git commit -m "updates" && git push && git tag -f development-1.0.0 && git push -f origin development-1.0.0
