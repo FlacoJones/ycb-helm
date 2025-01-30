@@ -1,0 +1,15 @@
+userVersion: v1
+kind: Service
+metadata:
+  name: {{.Values.user.service.name}}
+  namespace: {{.Values.namespace}}
+  labels:
+    app: {{.Values.user.service.name}}
+spec:
+  type:
+  ports:
+    - name: user
+      port: {{.Values.user.service.port}}
+      targetPort: {{.Values.user.service.port}}
+  selector:
+    app: {{.Values.user.service.name}}

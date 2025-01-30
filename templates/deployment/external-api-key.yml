@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{.Values.externalApiKey.name}}
+  namespace: {{.Values.namespace}}
+  labels:
+    app: {{.Values.externalApiKey.name}}
+spec:
+  replicas: {{.Values.externalApiKey.replicas}}
+  selector:
+    matchLabels:
+      app: {{.Values.externalApiKey.name}}
+  template:
+    metadata:
+      labels:
+        app: {{.Values.externalApiKey.name}}
+    spec:
+      containers:
+        - name: {{.Values.externalApiKey.name}}
+          image: "{{ .Values.externalApiKey.image.repository }}:{{ .Values.externalApiKey.image.tag }}"
+          imagePullPolicy: {{.Values.externalApiKey.image.pullPolicy}}
+          ports:
+            - containerPort: {{.Values.externalApiKey.service.port}}

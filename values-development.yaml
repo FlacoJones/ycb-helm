@@ -12,6 +12,61 @@ frontend:
     name: frontend
     port: 3000
   PORT: 3000
+api:
+  name: api
+  replicas: 1
+  image:
+    repository: alo42/api
+    pullPolicy: Always
+    tag: development-1.0.0
+  service:
+    name: api
+    port: 3001
+  PORT: 3001
+gateway:
+  name: api
+  replicas: 1
+  image:
+    repository: alo42/gateway
+    pullPolicy: Always
+    tag: development-1.0.0
+  service:
+    name: gateway
+    port: 9000
+  PORT: 9000
+user:
+  name: user
+  replicas: 1
+  image:
+    repository: alo42/user
+    pullPolicy: Always
+    tag: development-1.0.0
+  service:
+    name: user
+    port: 9001
+  PORT: 9001
+record:
+  name: record
+  replicas: 1
+  image:
+    repository: alo42/record
+    pullPolicy: Always
+    tag: development-1.0.0
+  service:
+    name: record
+    port: 9002
+  PORT: 9002
+externalApiKey:
+  name: externalApiKey
+  replicas: 1
+  image:
+    repository: alo42/externalApiKey
+    pullPolicy: Always
+    tag: development-1.0.0
+  service:
+    name: externalApiKey
+    port: 9003
+  PORT: 9003
 ingress:
   name: ycb-development
   ingressClassName: nginx

@@ -11,8 +11,5 @@ spec:
     - name: frontend
       port: {{.Values.frontend.service.port}}
       targetPort: {{.Values.frontend.service.port}}
-    - name: db-dashboard
-      port: {{.Values.frontend.dbDashboardService.port}}
-      targetPort: {{.Values.frontend.dbDashboardService.port}}
   selector:
     app: {{.Values.frontend.service.name}}
