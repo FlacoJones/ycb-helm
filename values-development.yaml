@@ -123,7 +123,7 @@ keycloak:
   service:
     name: keycloak
     port: 8080
-  KC_DB: keycloak
+  KC_DB: postgres
   KC_DB_SCHEMA: keycloak
   KC_PROXY: edge
   KC_HTTP_ENABLED: "true"
