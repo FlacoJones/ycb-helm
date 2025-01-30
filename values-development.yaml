@@ -5,9 +5,9 @@ frontend:
   name: frontend
   replicas: 1
   image:
-    repository: openq/openq-drm
+    repository: alo42/frontend
     pullPolicy: Always
-    tag: development-1.5.822
+    tag: development-1.0.0
   service:
     name: frontend
     port: 3000
