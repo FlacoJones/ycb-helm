@@ -1,15 +1,15 @@
 apiVersion: v1
 kind: Service
 metadata:
-  name: {{.Values.externalApiKey.service.name}}
+  name: {{.Values.externalapikey.service.name}}
   namespace: {{.Values.namespace}}
   labels:
-    app: {{.Values.externalApiKey.service.name}}
+    app: {{.Values.externalapikey.service.name}}
 spec:
   type:
   ports:
-    - name: externalApiKey
-      port: {{.Values.externalApiKey.service.port}}
-      targetPort: {{.Values.externalApiKey.service.port}}
+    - name: externalapikey
+      port: {{.Values.externalapikey.service.port}}
+      targetPort: {{.Values.externalapikey.service.port}}
   selector:
-    app: {{.Values.externalApiKey.service.name}}
+    app: {{.Values.externalapikey.service.name}}

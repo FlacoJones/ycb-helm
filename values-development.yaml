@@ -24,7 +24,7 @@ api:
     port: 3001
   PORT: 3001
 gateway:
-  name: api
+  name: gateway
   replicas: 1
   image:
     repository: alo42/gateway
@@ -56,15 +56,15 @@ record:
     name: record
     port: 9002
   PORT: 9002
-externalApiKey:
-  name: externalApiKey
+externalapikey:
+  name: externalapikey
   replicas: 1
   image:
-    repository: alo42/externalApiKey
+    repository: alo42/external-api-key
     pullPolicy: Always
     tag: development-1.0.0
   service:
-    name: externalApiKey
+    name: externalapikey
     port: 9003
   PORT: 9003
 ingress:
