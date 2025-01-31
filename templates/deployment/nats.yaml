@@ -21,3 +21,6 @@ spec:
           imagePullPolicy: {{.Values.nats.image.pullPolicy}}
           ports:
             - containerPort: {{.Values.nats.service.port}}
+          env:
+            - name: NATS_LOG_LEVEL
+              value: "{{ .Values.nats.NATS_LOG_LEVEL }}"

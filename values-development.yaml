@@ -144,6 +144,7 @@ nats:
   service:
     name: nats
     port: 4222
+  NATS_LOG_LEVEL: debug
 embedcreateimageopenai:
   name: embedcreateimageopenai
   replicas: 1
@@ -198,7 +199,6 @@ embedsaveopenai:
   NATS_DLQ_SUBJECT: "dlq"
   SUBJECTS: "embed.save.openai"
   STREAM: "embedding-save-stream"
-  REPLY_SUBJECT: "embed.save.openai.reply"
   MAX_DELIVERY_ATTEMPTS: 5
   PUBLIC_GATEWAY_URL: "https://development.yourcommonbase.com/gateway"
   RECORD_SERVICE_URL: "record:5001"
