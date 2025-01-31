@@ -121,7 +121,7 @@ keycloak:
   image:
     repository: alo42/keycloak
     pullPolicy: Always
-    tag: development-1.0.2
+    tag: development-1.0.4
   service:
     name: keycloak
     port: 8080
