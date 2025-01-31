@@ -190,7 +190,7 @@ embedsaveopenai:
   image:
     repository: alo42/embed-save-openai
     pullPolicy: Always
-    tag: development-1.0.0
+    tag: development-1.0.2
   service:
     port: 5007
   GO_ENV: development

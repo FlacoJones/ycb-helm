@@ -13,3 +13,4 @@ commands.sh
 
 secrets-development.yaml
 secrets-production.yaml
+keycloak.yaml

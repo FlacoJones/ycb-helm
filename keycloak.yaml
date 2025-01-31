@@ -5,3 +5,12 @@ Clients -> ycb -> Authorization -> Resources
 - Copy keynames with value of User ID from user
 
 - Add Resource ID to COmmonbases for user
+
+curl -X POST https://development.yourcommonbase.com/gateway/record \   
+  -H "Content-Type: multipart/form-data; boundary=---011000010111000001101001" \
+  -H "User-Agent: insomnia/10.0.0" \
+  -F "commonbaseId=9c77cad9-7ecd-4b25-a9cd-8575ab6721c8" \
+  -F "mimeType=text" \
+  -F "text=testingtesting"
+
+  curl -X POST https://development.yourcommonbase.com/gateway/record -H "Content-Type: multipart/form-data; boundary=---011000010111000001101001" -H "User-Agent: insomnia/10.0.0" -H "Authorization: Bearer ycbr/hFOHk4rZPbvdEejqULg2PQQqffgsJ6dY9XTyfM0DM=" -F "commonbaseId=9c77cad9-7ecd-4b25-a9cd-8575ab6721c8" -F "mimeType=text" -F "text=testingtesting"
