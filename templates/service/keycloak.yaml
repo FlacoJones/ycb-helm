@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: {{.Values.keycloak.service.name}}
+  namespace: {{.Values.namespace}}
+  labels:
+    app: {{.Values.keycloak.service.name}}
+spec:
+  type:
+  ports:
+    - name: keycloak
+      port: {{.Values.keycloak.service.port}}
+      targetPort: {{.Values.keycloak.service.port}}
+  selector:
+    app: {{.Values.keycloak.service.name}}
