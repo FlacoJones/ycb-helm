@@ -21,6 +21,9 @@ spec:
           imagePullPolicy: {{.Values.keycloak.image.pullPolicy}}
           ports:
             - containerPort: {{.Values.keycloak.service.port}}
+            - containerPort: {{.Values.keycloak.service.adminDashboardPort}}
+            - containerPort:
+                {{.Values.keycloak.service.otherAdminDashboardPort}}
           env:
             - name: KC_DB
               value: "{{ .Values.keycloak.KC_DB }}"

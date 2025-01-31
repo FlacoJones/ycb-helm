@@ -49,6 +49,13 @@ spec:
                 name: {{.Values.user.service.name}}
                 port:
                   number: {{.Values.user.service.port}}
+          - path: /keycloak(/|$)(.*)
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: {{.Values.keycloak.service.name}}
+                port:
+                  number: {{.Values.keycloak.service.port}}
           - path: /()(.*)
             pathType: ImplementationSpecific
             backend:

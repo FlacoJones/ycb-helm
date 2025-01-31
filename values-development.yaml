@@ -125,6 +125,8 @@ keycloak:
   service:
     name: keycloak
     port: 8080
+    adminDashboardPort: 9000
+    otherAdminDashboardPort: 8443
   KC_DB: postgres
   KC_DB_SCHEMA: keycloak
   KC_PROXY: edge

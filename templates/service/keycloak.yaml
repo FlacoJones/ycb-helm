@@ -11,5 +11,11 @@ spec:
     - name: keycloak
       port: {{.Values.keycloak.service.port}}
       targetPort: {{.Values.keycloak.service.port}}
+    - name: keycloak-admin-dashboard
+      port: {{.Values.keycloak.service.adminDashboardPort}}
+      targetPort: {{.Values.keycloak.service.adminDashboardPort}}
+    - name: keycloak-other-admin-dashboard
+      port: {{.Values.keycloak.service.otherAdminDashboardPort}}
+      targetPort: {{.Values.keycloak.service.otherAdminDashboardPort}}
   selector:
     app: {{.Values.keycloak.service.name}}
