@@ -22,46 +22,6 @@ spec:
           ports:
             - containerPort: {{.Values.record.service.port}}
           env:
-            - name: AWS_ACCESS_KEY_ID
-              valueFrom:
-                secretKeyRef:
-                  name: aws-access-key-id
-                  key: aws-access-key-id
-            - name: AWS_SECRET_ACCESS_KEY
-              valueFrom:
-                secretKeyRef:
-                  name: aws-secret-access-key
-                  key: aws-secret-access-key
-            - name: CLOUDFRONT_URL
-              valueFrom:
-                secretKeyRef:
-                  name: cloudfront-url
-                  key: cloudfront-url
-            - name: CLOUDFRONT_PRIVATE_KEY_ID
-              valueFrom:
-                secretKeyRef:
-                  name: cloudfront-private-key-id
-                  key: cloudfront-private-key-id
-            - name: CLOUDFRONT_PRIVATE_KEY_PATH
-              valueFrom:
-                secretKeyRef:
-                  name: cloudfront-private-key-path
-                  key: cloudfront-private-key-path
-            - name: DATABASE_URL
-              valueFrom:
-                secretKeyRef:
-                  name: database-url
-                  key: database-url
-            - name: SERVICE_AUTH_TOKEN
-              valueFrom:
-                secretKeyRef:
-                  name: service-auth-token
-                  key: service-auth-token
-            - name: EXTERNAL_API_KEY_ENCRYPTION_KEY
-              valueFrom:
-                secretKeyRef:
-                  name: external-api-encryption-key
-                  key: external-api-encryption-key
             - name: GO_ENV
               value: "{{ .Values.record.GO_ENV }}"
             - name: SERVER_PORT
@@ -102,3 +62,43 @@ spec:
               value: "{{ .Values.record.RECORD_SERVICE_URL }}"
             - name: NATS_CREATE_IMAGE_OPENAI_SUBJECT
               value: "{{ .Values.record.NATS_CREATE_IMAGE_OPENAI_SUBJECT }}"
+            - name: AWS_ACCESS_KEY_ID
+              valueFrom:
+                secretKeyRef:
+                  name: aws-access-key-id
+                  key: aws-access-key-id
+            - name: AWS_SECRET_ACCESS_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: aws-secret-access-key
+                  key: aws-secret-access-key
+            - name: CLOUDFRONT_URL
+              valueFrom:
+                secretKeyRef:
+                  name: cloudfront-url
+                  key: cloudfront-url
+            - name: CLOUDFRONT_PRIVATE_KEY_ID
+              valueFrom:
+                secretKeyRef:
+                  name: cloudfront-private-key-id
+                  key: cloudfront-private-key-id
+            - name: CLOUDFRONT_PRIVATE_KEY_PATH
+              valueFrom:
+                secretKeyRef:
+                  name: cloudfront-private-key-path
+                  key: cloudfront-private-key-path
+            - name: DATABASE_URL
+              valueFrom:
+                secretKeyRef:
+                  name: database-url
+                  key: database-url
+            - name: SERVICE_AUTH_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  name: service-auth-token
+                  key: service-auth-token
+            - name: EXTERNAL_API_KEY_ENCRYPTION_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: external-api-encryption-key
+                  key: external-api-encryption-key

@@ -21,3 +21,45 @@ spec:
           imagePullPolicy: {{.Values.frontend.image.pullPolicy}}
           ports:
             - containerPort: {{.Values.frontend.service.port}}
+          env:
+            - name: PORT
+              value: "{{ .Values.frontend.PORT }}"
+            - name: CLOUD_URL
+              value: "{{ .Values.frontend.CLOUD_URL }}"
+            - name: DATABASE_URL
+              value: "{{ .Values.frontend.DATABASE_URL }}"
+            - name: CLERK_SECRET_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: clerk-secret-key
+                  key: clerk-secret-key
+            - name: TOKEN
+              valueFrom:
+                secretKeyRef:
+                  name: token
+                  key: token
+            - name: OPENAI_API_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: openai-api-key
+                  key: openai-api-key
+            - name: MEILI_DEFAULT_SEARCH_API_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: meili-default-search-api-key
+                  key: meili-default-search-api-key
+            - name: MEILI_DEFAULT_SEARCH_UID
+              valueFrom:
+                secretKeyRef:
+                  name: meili-default-search-uid
+                  key: meili-default-search-uid
+            - name: MEILI_DEFAULT_ADMIN_API_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: meili-default-admin-api-key
+                  key: meili-default-admin-api-key
+            - name: MEILI_DEFAULT_ADMIN_UID
+              valueFrom:
+                secretKeyRef:
+                  name: meili-default-admin-uid
+                  key: meili-default-admin-uid

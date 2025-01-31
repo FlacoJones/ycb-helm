@@ -22,21 +22,10 @@ spec:
           ports:
             - containerPort: {{.Values.externalapikey.service.port}}
           env:
-            - name: DATABASE_URL
-              valueFrom:
-                secretKeyRef:
-                  name: database-url
-                  key: database-url
-            - name: EAK_ENCRYPTION_KEY
-              valueFrom:
-                secretKeyRef:
-                  name: eak-encryption-key
-                  key: eak-encryption-key
-            - name: SERVICE_AUTH_TOKEN
-              valueFrom:
-                secretKeyRef:
-                  name: service-auth-token
-                  key: service-auth-token
+            - name: GO_ENV
+              value: "{{ .Values.externalapikey.GO_ENV }}"
+            - name: SERVER_PORT
+              value: "{{ .Values.externalapikey.SERVER_PORT }}"
             - name: NATS_URL
               value: "{{ .Values.externalapikey.NATS_URL }}"
             - name: NATS_CLIENT_NAME
@@ -53,7 +42,18 @@ spec:
               value: "{{ .Values.externalapikey.RECORD_SERVICE_URL }}"
             - name: EXTERNAL_API_KEY_SERVICE_URL
               value: "{{ .Values.externalapikey.EXTERNAL_API_KEY_SERVICE_URL }}"
-            - name: GO_ENV
-              value: "{{ .Values.externalapikey.GO_ENV }}"
-            - name: SERVER_PORT
-              value: "{{ .Values.externalapikey.SERVER_PORT }}"
+            - name: DATABASE_URL
+              valueFrom:
+                secretKeyRef:
+                  name: database-url
+                  key: database-url
+            - name: EAK_ENCRYPTION_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: eak-encryption-key
+                  key: eak-encryption-key
+            - name: SERVICE_AUTH_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  name: service-auth-token
+                  key: service-auth-token

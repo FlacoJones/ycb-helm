@@ -22,11 +22,6 @@ spec:
           ports:
             - containerPort: {{.Values.gateway.service.port}}
           env:
-            - name: SERVICE_AUTH_TOKEN
-              valueFrom:
-                secretKeyRef:
-                  name: service-auth-token
-                  key: service-auth-token
             - name: GO_ENV
               value: "{{ .Values.gateway.GO_ENV }}"
             - name: SERVER_PORT
@@ -45,3 +40,8 @@ spec:
               value: "{{ .Values.gateway.RECORD_SERVICE_URL }}"
             - name: USER_SERVICE_URL
               value: "{{ .Values.gateway.USER_SERVICE_URL }}"
+            - name: SERVICE_AUTH_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  name: service-auth-token
+                  key: service-auth-token

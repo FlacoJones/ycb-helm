@@ -22,6 +22,16 @@ spec:
           ports:
             - containerPort: {{.Values.keycloak.service.port}}
           env:
+            - name: KC_DB
+              value: "{{ .Values.keycloak.KC_DB }}"
+            - name: KC_DB_SCHEMA
+              value: "{{ .Values.keycloak.KC_DB_SCHEMA }}"
+            - name: KC_PROXY
+              value: "{{ .Values.keycloak.KC_PROXY }}"
+            - name: KC_HTTP_ENABLED
+              value: "{{ .Values.keycloak.KC_HTTP_ENABLED }}"
+            - name: KEYCLOAK_ADMIN
+              value: "{{ .Values.keycloak.KEYCLOAK_ADMIN }}"
             - name: KC_DB_URL
               valueFrom:
                 secretKeyRef:
@@ -37,13 +47,3 @@ spec:
                 secretKeyRef:
                   name: kc-db-admin-password
                   key: kc-db-admin-password
-            - name: KC_DB
-              value: "{{ .Values.keycloak.KC_DB }}"
-            - name: KC_DB_SCHEMA
-              value: "{{ .Values.keycloak.KC_DB_SCHEMA }}"
-            - name: KC_PROXY
-              value: "{{ .Values.keycloak.KC_PROXY }}"
-            - name: KC_HTTP_ENABLED
-              value: "{{ .Values.keycloak.KC_HTTP_ENABLED }}"
-            - name: KEYCLOAK_ADMIN
-              value: "{{ .Values.keycloak.KEYCLOAK_ADMIN }}"

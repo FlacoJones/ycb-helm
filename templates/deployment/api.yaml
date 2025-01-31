@@ -22,6 +22,22 @@ spec:
           ports:
             - containerPort: {{.Values.api.service.port}}
           env:
+            - name: PORT
+              value: "{{ .Values.api.PORT }}"
+            - name: COMMONBASE_PLATFORM_URL
+              value: "{{ .Values.api.COMMONBASE_PLATFORM_URL }}"
+            - name: SUPABASE_ANON_KEY
+              value: "{{ .Values.api.SUPABASE_ANON_KEY }}"
+            - name: MATCH_THRESHOLD_DEFAULT
+              value: "{{ .Values.api.MATCH_THRESHOLD_DEFAULT }}"
+            - name: MATCH_LIMIT_DEFAULT
+              value: "{{ .Values.api.MATCH_LIMIT_DEFAULT }}"
+            - name: FTS_INDEX_NAME
+              value: "{{ .Values.api.FTS_INDEX_NAME }}"
+            - name: SUPABASE_COMMONBASE_TABLE
+              value: "{{ .Values.api.SUPABASE_COMMONBASE_TABLE }}"
+            - name: SUPABASE_COMMONBASE_RANDOM_RPC
+              value: "{{ .Values.api.SUPABASE_COMMONBASE_RANDOM_RPC }}"
             - name: SENTRY_AUTH_TOKEN
               valueFrom:
                 secretKeyRef:
@@ -67,19 +83,3 @@ spec:
                 secretKeyRef:
                   name: supabase-service-role-key
                   key: supabase-service-role-key
-            - name: PORT
-              value: "{{ .Values.api.PORT }}"
-            - name: COMMONBASE_PLATFORM_URL
-              value: "{{ .Values.api.COMMONBASE_PLATFORM_URL }}"
-            - name: SUPABASE_ANON_KEY
-              value: "{{ .Values.api.SUPABASE_ANON_KEY }}"
-            - name: MATCH_THRESHOLD_DEFAULT
-              value: "{{ .Values.api.MATCH_THRESHOLD_DEFAULT }}"
-            - name: MATCH_LIMIT_DEFAULT
-              value: "{{ .Values.api.MATCH_LIMIT_DEFAULT }}"
-            - name: FTS_INDEX_NAME
-              value: "{{ .Values.api.FTS_INDEX_NAME }}"
-            - name: SUPABASE_COMMONBASE_TABLE
-              value: "{{ .Values.api.SUPABASE_COMMONBASE_TABLE }}"
-            - name: SUPABASE_COMMONBASE_RANDOM_RPC
-              value: "{{ .Values.api.SUPABASE_COMMONBASE_RANDOM_RPC }}"

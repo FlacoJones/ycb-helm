@@ -7,11 +7,13 @@ frontend:
   image:
     repository: alo42/frontend
     pullPolicy: Always
-    tag: development-1.0.0
+    tag: development-1.0.3
   service:
     name: frontend
     port: 3000
   PORT: 3000
+  CLOUD_URL: "http://api:3001"
+  DATABASE_URL: "/var/data/db1.db"
 api:
   name: api
   replicas: 1

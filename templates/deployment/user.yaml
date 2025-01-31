@@ -22,11 +22,6 @@ spec:
           ports:
             - containerPort: {{.Values.user.service.port}}
           env:
-            - name: DATABASE_URL
-              valueFrom:
-                secretKeyRef:
-                  name: database-url
-                  key: database-url
             - name: GO_ENV
               value: "{{ .Values.user.GO_ENV }}"
             - name: SERVER_PORT
@@ -39,3 +34,8 @@ spec:
               value: "{{ .Values.user.KEYCLOAK_URL }}"
             - name: KEYCLOAK_REALM
               value: "{{ .Values.user.KEYCLOAK_REALM }}"
+            - name: DATABASE_URL
+              valueFrom:
+                secretKeyRef:
+                  name: database-url
+                  key: database-url
