@@ -14,7 +14,7 @@ spec:
     - host: {{.Values.ingress.drmHost}}
       http:
         paths:
-          - path: /api(/|$)(.*)
+          - path: /backend(/|$)(.*)
             pathType: ImplementationSpecific
             backend:
               service:

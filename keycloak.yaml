@@ -1,0 +1,7 @@
+Create User
+Clients -> ycb -> Authorization -> Resources
+- gen uuid Name: /commonbase/7be10bff-9941-47d3-9687-2490254cacbd
+- type: crn:ycb:commonbase
+- Copy keynames with value of User ID from user
+
+- Add Resource ID to COmmonbases for user

@@ -20,7 +20,7 @@ api:
   image:
     repository: alo42/api
     pullPolicy: Always
-    tag: development-1.0.2
+    tag: development-1.0.3
   service:
     name: api
     port: 3001
