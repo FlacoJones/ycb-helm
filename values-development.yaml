@@ -158,10 +158,10 @@ embedCreateImageOpenai:
   GO_ENV: development
   WORKER_NAME: "embed-create-image-openai-worker"
   NATS_URL: "nats://nats:4222"
-  NATS_DLQ_SUBJECT: ""
-  STREAM: 
-  SUBJECTS: 
-  REPLY_SUBJECT: 
+  NATS_DLQ_SUBJECT: "dlq"
+  REPLY_SUBJECT: "embed.save.openai"
+  SUBJECTS: "embed.create.img.openai"
+  STREAM: "embedding-create-stream"
   MAX_DELIVERY_ATTEMPTS: 5
 embedCreateTextOpenai:
   name: embedCreateTextOpenai
@@ -177,10 +177,10 @@ embedCreateTextOpenai:
   GO_ENV: development
   WORKER_NAME: "embed-create-text-openai-worker"
   NATS_URL: "nats://nats:4222"
-  NATS_DLQ_SUBJECT: ""
-  STREAM: 
-  SUBJECTS: 
-  REPLY_SUBJECT: 
+  NATS_DLQ_SUBJECT: "dlq"
+  REPLY_SUBJECT: "embed.save.openai"
+  SUBJECTS: "embed.create.text.openai"
+  STREAM: "embedding-create-stream"
   MAX_DELIVERY_ATTEMPTS: 5
 embedSaveOpenai:
   name: embedSaveOpenai
@@ -190,19 +190,18 @@ embedSaveOpenai:
     pullPolicy: Always
     tag: development-1.0.0
   service:
-    name: embedSaveOpenai
     port: 5007
-  SERVER_PORT: 5007
   GO_ENV: development
+  SERVER_PORT: 5007
   WORKER_NAME: "embed-save-openai-worker"
-  PUBLIC_GATEWAY_URL: "http://gateway:5000"
-  RECORD_SERVICE_URL: "record:5000"
   NATS_URL: "nats://nats:4222"
-  NATS_DLQ_SUBJECT: ""
-  STREAM: 
-  SUBJECTS: 
-  REPLY_SUBJECT: 
+  NATS_DLQ_SUBJECT: "dlq"
+  SUBJECTS: "embed.save.openai"
+  STREAM: "embedding-save-stream"
+  REPLY_SUBJECT: "embed.save.openai.reply"
   MAX_DELIVERY_ATTEMPTS: 5
+  PUBLIC_GATEWAY_URL: "https://development.yourcommonbase.com/gateway"
+  RECORD_SERVICE_URL: "record:5001"
 ingress:
   name: ycb-development
   ingressClassName: nginx
