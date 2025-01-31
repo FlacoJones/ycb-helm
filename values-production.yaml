@@ -76,7 +76,7 @@ record:
     port: 5001
   GO_ENV: development
   SERVER_PORT: 5001
-  RECORD_IMAGE_BUCKET: 'ycb-development'
+  RECORD_IMAGE_BUCKET: 'ycb-production'
   AWS_REGION: us-east-2
   NATS_URL: "nats://nats:4222"
   NATS_CLIENT_NAME: "record"
