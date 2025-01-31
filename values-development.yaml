@@ -208,4 +208,4 @@ embedsaveopenai:
 ingress:
   name: ycb-development
   ingressClassName: nginx
-  host: development.yourcommonbase.com
+  host: yourcommonbase.com
