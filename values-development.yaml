@@ -132,6 +132,7 @@ keycloak:
   KC_PROXY: edge
   KC_HTTP_ENABLED: "true"
   KEYCLOAK_ADMIN: admin
+  KC_HOSTNAME: 'https://development.yourcommonbase.com/keycloak'
 nats:
   name: nats
   replicas: 1
