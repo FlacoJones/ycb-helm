@@ -138,12 +138,13 @@ nats:
   name: nats
   replicas: 1
   image:
-    repository: nats
+    repository: alo42/nats
     pullPolicy: Always
-    tag: latest
+    tag: development-1.0.1
   service:
     name: nats
     port: 4222
+    mgmtPort: 8222
   NATS_LOG_LEVEL: debug
 embedcreateimageopenai:
   name: embedcreateimageopenai

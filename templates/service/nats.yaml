@@ -11,5 +11,8 @@ spec:
     - name: nats
       port: {{.Values.nats.service.port}}
       targetPort: {{.Values.nats.service.port}}
+    - name: nats-mgmt
+      port: {{.Values.nats.service.mgmtPort}}
+      targetPort: {{.Values.nats.service.mgmtPort}}
   selector:
     app: {{.Values.nats.service.name}}

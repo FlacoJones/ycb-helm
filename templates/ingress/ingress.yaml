@@ -41,7 +41,14 @@ spec:
               service:
                 name: {{.Values.nats.service.name}}
                 port:
-                  number: {{.Values.nats.service.port}}
+                  number: {{.Values.nats.service.mgmtPort}}
+          - path: /jsz(/|$)(.*)
+            pathType: ImplementationSpecific
+            backend:
+              service:
+                name: {{.Values.nats.service.name}}
+                port:
+                  number: {{.Values.nats.service.mgmtPort}}
           - path: /record(/|$)(.*)
             pathType: ImplementationSpecific
             backend:
