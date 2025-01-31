@@ -25,7 +25,7 @@ api:
     name: api
     port: 3001
   PORT: 3001
-  COMMONBASE_PLATFORM_URL: 'https://development.yourcommonbase.com/gateway'
+  COMMONBASE_PLATFORM_URL: 'https://yourcommonbase.com/gateway'
   SUPABASE_COMMONBASE_TABLE: "ycb_staging"
   SUPABASE_COMMONBASE_RANDOM_RPC: "random_rows_ycb_staging"
   MATCH_THRESHOLD_DEFAULT: "0.2"
@@ -46,7 +46,7 @@ gateway:
   AUTH_PAT_CONTROL_CHAR: ycb
   KEYCLOAK_URL: "keycloak:8080"
   KEYCLOAK_REALM: ycb
-  PUBLIC_GATEWAY_URL: "https://development.yourcommonbase.com/gateway"
+  PUBLIC_GATEWAY_URL: "https://yourcommonbase.com/gateway"
   EXTERNAL_API_KEY_SERVICE_URL: "externalapikey:5000"
   RECORD_SERVICE_URL: "record:5001"
   USER_SERVICE_URL: "user:5002"
@@ -84,7 +84,7 @@ record:
   KEYCLOAK_REALM: ycb
   SEARCH_DEFAULT_MATCH_LIMIT: "10"
   SEARCH_DEFAULT_MATCH_THRESHOLD: "0.2"
-  PUBLIC_GATEWAY_URL: "https://development.yourcommonbase.com/gateway"
+  PUBLIC_GATEWAY_URL: "https://yourcommonbase.com/gateway"
   USER_SERVICE_URL: "user:5002"
   RECORD_SERVICE_URL: "record:5001"
   NATS_URL: "nats://nats:4222"
@@ -111,7 +111,7 @@ externalapikey:
   NATS_CLIENT_NAME: "external-api-key"
   KEYCLOAK_URL: "keycloak:8080"
   KEYCLOAK_REALM: ycb
-  PUBLIC_GATEWAY_URL: "https://development.yourcommonbase.com/gateway"
+  PUBLIC_GATEWAY_URL: "https://yourcommonbase.com/gateway"
   USER_SERVICE_URL: "user:5002"
   RECORD_SERVICE_URL: "record:5001"
   EXTERNAL_API_KEY_SERVICE_URL: "externalapikey:5000"
@@ -132,7 +132,7 @@ keycloak:
   KC_PROXY: edge
   KC_HTTP_ENABLED: "true"
   KEYCLOAK_ADMIN: admin
-  KC_HOSTNAME: 'https://development.yourcommonbase.com/keycloak'
+  KC_HOSTNAME: 'https://yourcommonbase.com/keycloak'
   KC_LOG_LEVEL: debug
 nats:
   name: nats
@@ -184,7 +184,7 @@ embedcreatetextopenai:
   SUBJECTS: "embed.create.text.openai"
   STREAM: "embedding-create-stream"
   MAX_DELIVERY_ATTEMPTS: 5
-  PUBLIC_GATEWAY_URL: "https://development.yourcommonbase.com/gateway"
+  PUBLIC_GATEWAY_URL: "https://yourcommonbase.com/gateway"
   RECORD_SERVICE_URL: "record:5001"
 embedsaveopenai:
   name: embedsaveopenai
@@ -203,7 +203,7 @@ embedsaveopenai:
   SUBJECTS: "embed.save.openai"
   STREAM: "embedding-save-stream"
   MAX_DELIVERY_ATTEMPTS: 5
-  PUBLIC_GATEWAY_URL: "https://development.yourcommonbase.com/gateway"
+  PUBLIC_GATEWAY_URL: "https://yourcommonbase.com/gateway"
   RECORD_SERVICE_URL: "record:5001"
 ingress:
   name: ycb-development
