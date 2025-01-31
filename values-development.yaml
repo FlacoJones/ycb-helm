@@ -80,12 +80,6 @@ record:
   SERVER_PORT: 5001
   RECORD_IMAGE_BUCKET: 'ycb-development'
   AWS_REGION: us-east-2
-  NATS_URL: "nats://nats:4222"
-  NATS_CLIENT_NAME: "record"
-  NATS_DLQ: "dlq"
-  NATS_CREATE_STREAM: "NATS_CREATE_STREAM"
-  NATS_SAVE_STREAM: "NATS_SAVE_STREAM"
-  NATS_SAVE_OPENAI_SUBJECT: "embed.save.openai"
   KEYCLOAK_URL: "keycloak:8080"
   KEYCLOAK_REALM: ycb
   SEARCH_DEFAULT_MATCH_LIMIT: "10"
@@ -93,8 +87,14 @@ record:
   PUBLIC_GATEWAY_URL: "https://development.yourcommonbase.com/gateway"
   USER_SERVICE_URL: "user:5002"
   RECORD_SERVICE_URL: "record:5001"
+  NATS_URL: "nats://nats:4222"
+  NATS_CLIENT_NAME: "record"
+  NATS_DLQ: "dlq"
   NATS_CREATE_IMAGE_OPENAI_SUBJECT: "embed.create.img.openai"
   NATS_CREATE_TEXT_OPENAI_SUBJECT: "embed.create.text.openai"
+  NATS_CREATE_STREAM: "NATS_CREATE_STREAM"
+  NATS_SAVE_STREAM: "NATS_SAVE_STREAM"
+  NATS_SAVE_OPENAI_SUBJECT: "embed.save.openai"
 externalapikey:
   name: externalapikey
   replicas: 1
