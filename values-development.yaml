@@ -144,15 +144,15 @@ nats:
   service:
     name: nats
     port: 4222
-embedCreateImageOpenai:
-  name: embedCreateImageOpenai
+embedcreateimageopenai:
+  name: embedcreateimageopenai
   replicas: 1
   image:
     repository: alo42/embed-create-image-openai
     pullPolicy: Always
     tag: development-1.0.0
   service:
-    name: embedCreateImageOpenai
+    name: embedcreateimageopenai
     port: 5005
   SERVER_PORT: 5005
   GO_ENV: development
@@ -163,15 +163,15 @@ embedCreateImageOpenai:
   SUBJECTS: "embed.create.img.openai"
   STREAM: "embedding-create-stream"
   MAX_DELIVERY_ATTEMPTS: 5
-embedCreateTextOpenai:
-  name: embedCreateTextOpenai
+embedcreatetextopenai:
+  name: embedcreatetextopenai
   replicas: 1
   image:
     repository: alo42/embed-create-text-openai
     pullPolicy: Always
     tag: development-1.0.0
   service:
-    name: embedCreateTextOpenai
+    name: embedcreatetextopenai
     port: 5006
   SERVER_PORT: 5006
   GO_ENV: development
@@ -182,8 +182,8 @@ embedCreateTextOpenai:
   SUBJECTS: "embed.create.text.openai"
   STREAM: "embedding-create-stream"
   MAX_DELIVERY_ATTEMPTS: 5
-embedSaveOpenai:
-  name: embedSaveOpenai
+embedsaveopenai:
+  name: embedsaveopenai
   replicas: 1
   image:
     repository: alo42/embed-save-openai

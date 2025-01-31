@@ -1,49 +1,49 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{.Values.embedSaveOpenAi.name}}
+  name: {{.Values.embedsaveopenai.name}}
   namespace: {{.Values.namespace}}
   labels:
-    app: {{.Values.embedSaveOpenAi.name}}
+    app: {{.Values.embedsaveopenai.name}}
 spec:
-  replicas: {{.Values.embedSaveOpenAi.replicas}}
+  replicas: {{.Values.embedsaveopenai.replicas}}
   selector:
     matchLabels:
-      app: {{.Values.embedSaveOpenAi.name}}
+      app: {{.Values.embedsaveopenai.name}}
   template:
     metadata:
       labels:
-        app: {{.Values.embedSaveOpenAi.name}}
+        app: {{.Values.embedsaveopenai.name}}
     spec:
       containers:
-        - name: {{.Values.embedSaveOpenAi.name}}
-          image: "{{ .Values.embedSaveOpenAi.image.repository }}:{{ .Values.embedSaveOpenAi.image.tag }}"
-          imagePullPolicy: {{.Values.embedSaveOpenAi.image.pullPolicy}}
+        - name: {{.Values.embedsaveopenai.name}}
+          image: "{{ .Values.embedsaveopenai.image.repository }}:{{ .Values.embedsaveopenai.image.tag }}"
+          imagePullPolicy: {{.Values.embedsaveopenai.image.pullPolicy}}
           ports:
-            - containerPort: {{.Values.embedSaveOpenAi.service.port}}
+            - containerPort: {{.Values.embedsaveopenai.service.port}}
           env:
             - name: GO_ENV
-              value: "{{ .Values.embedSaveOpenAi.GO_ENV }}"
+              value: "{{ .Values.embedsaveopenai.GO_ENV }}"
             - name: SERVER_PORT
-              value: "{{ .Values.embedSaveOpenAi.SERVER_PORT }}"
+              value: "{{ .Values.embedsaveopenai.SERVER_PORT }}"
             - name: WORKER_NAME
-              value: "{{ .Values.embedSaveOpenAi.WORKER_NAME }}"
+              value: "{{ .Values.embedsaveopenai.WORKER_NAME }}"
             - name: NATS_URL
-              value: "{{ .Values.embedSaveOpenAi.NATS_URL }}"
+              value: "{{ .Values.embedsaveopenai.NATS_URL }}"
             - name: NATS_DLQ_SUBJECT
-              value: "{{ .Values.embedSaveOpenAi.NATS_DLQ_SUBJECT }}"
+              value: "{{ .Values.embedsaveopenai.NATS_DLQ_SUBJECT }}"
             - name: STREAM
-              value: "{{ .Values.embedSaveOpenAi.STREAM }}"
+              value: "{{ .Values.embedsaveopenai.STREAM }}"
             - name: SUBJECTS
-              value: "{{ .Values.embedSaveOpenAi.SUBJECTS }}"
+              value: "{{ .Values.embedsaveopenai.SUBJECTS }}"
             - name: REPLY_SUBJECT
-              value: "{{ .Values.embedSaveOpenAi.REPLY_SUBJECT }}"
+              value: "{{ .Values.embedsaveopenai.REPLY_SUBJECT }}"
             - name: MAX_DELIVERY_ATTEMPTS
-              value: "{{ .Values.embedSaveOpenAi.MAX_DELIVERY_ATTEMPTS }}"
+              value: "{{ .Values.embedsaveopenai.MAX_DELIVERY_ATTEMPTS }}"
             - name: PUBLIC_GATEWAY_URL
-              value: "{{ .Values.embedSaveOpenAi.PUBLIC_GATEWAY_URL }}"
+              value: "{{ .Values.embedsaveopenai.PUBLIC_GATEWAY_URL }}"
             - name: RECORD_SERVICE_URL
-              value: "{{ .Values.embedSaveOpenAi.RECORD_SERVICE_URL }}"
+              value: "{{ .Values.embedsaveopenai.RECORD_SERVICE_URL }}"
             - name: SERVICE_AUTH_TOKEN
               valueFrom:
                 secretKeyRef:
