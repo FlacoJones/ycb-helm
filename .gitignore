@@ -10,3 +10,6 @@ secrets.yaml
 private-values.yaml
 
 commands.sh
+
+secrets-development.yaml
+secrets-production.yaml
