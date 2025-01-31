@@ -40,8 +40,17 @@ spec:
               value: "{{ .Values.embedcreatetextopenai.REPLY_SUBJECT }}"
             - name: MAX_DELIVERY_ATTEMPTS
               value: "{{ .Values.embedcreatetextopenai.MAX_DELIVERY_ATTEMPTS }}"
+            - name: PUBLIC_GATEWAY_URL
+              value: "{{ .Values.embedcreatetextopenai.PUBLIC_GATEWAY_URL }}"
+            - name: RECORD_SERVICE_URL
+              value: "{{ .Values.embedcreatetextopenai.RECORD_SERVICE_URL }}"
             - name: EAK_ENCRYPTION_KEY
               valueFrom:
                 secretKeyRef:
                   name: eak-encryption-key
                   key: eak-encryption-key
+            - name: SERVICE_AUTH_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  name: service-auth-token
+                  key: service-auth-token

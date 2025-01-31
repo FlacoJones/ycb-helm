@@ -171,7 +171,7 @@ embedcreatetextopenai:
   image:
     repository: alo42/embed-create-text-openai
     pullPolicy: Always
-    tag: development-1.0.0
+    tag: development-1.0.3
   service:
     name: embedcreatetextopenai
     port: 5006
@@ -184,6 +184,8 @@ embedcreatetextopenai:
   SUBJECTS: "embed.create.text.openai"
   STREAM: "embedding-create-stream"
   MAX_DELIVERY_ATTEMPTS: 5
+  PUBLIC_GATEWAY_URL: "https://development.yourcommonbase.com/gateway"
+  RECORD_SERVICE_URL: "record:5001"
 embedsaveopenai:
   name: embedsaveopenai
   replicas: 1
