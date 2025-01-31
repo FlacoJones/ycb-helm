@@ -1,0 +1,51 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{.Values.embedSaveOpenAi.name}}
+  namespace: {{.Values.namespace}}
+  labels:
+    app: {{.Values.embedSaveOpenAi.name}}
+spec:
+  replicas: {{.Values.embedSaveOpenAi.replicas}}
+  selector:
+    matchLabels:
+      app: {{.Values.embedSaveOpenAi.name}}
+  template:
+    metadata:
+      labels:
+        app: {{.Values.embedSaveOpenAi.name}}
+    spec:
+      containers:
+        - name: {{.Values.embedSaveOpenAi.name}}
+          image: "{{ .Values.embedSaveOpenAi.image.repository }}:{{ .Values.embedSaveOpenAi.image.tag }}"
+          imagePullPolicy: {{.Values.embedSaveOpenAi.image.pullPolicy}}
+          ports:
+            - containerPort: {{.Values.embedSaveOpenAi.service.port}}
+          env:
+            - name: GO_ENV
+              value: "{{ .Values.embedSaveOpenAi.GO_ENV }}"
+            - name: SERVER_PORT
+              value: "{{ .Values.embedSaveOpenAi.SERVER_PORT }}"
+            - name: WORKER_NAME
+              value: "{{ .Values.embedSaveOpenAi.WORKER_NAME }}"
+            - name: NATS_URL
+              value: "{{ .Values.embedSaveOpenAi.NATS_URL }}"
+            - name: NATS_DLQ_SUBJECT
+              value: "{{ .Values.embedSaveOpenAi.NATS_DLQ_SUBJECT }}"
+            - name: STREAM
+              value: "{{ .Values.embedSaveOpenAi.STREAM }}"
+            - name: SUBJECTS
+              value: "{{ .Values.embedSaveOpenAi.SUBJECTS }}"
+            - name: REPLY_SUBJECT
+              value: "{{ .Values.embedSaveOpenAi.REPLY_SUBJECT }}"
+            - name: MAX_DELIVERY_ATTEMPTS
+              value: "{{ .Values.embedSaveOpenAi.MAX_DELIVERY_ATTEMPTS }}"
+            - name: PUBLIC_GATEWAY_URL
+              value: "{{ .Values.embedSaveOpenAi.PUBLIC_GATEWAY_URL }}"
+            - name: RECORD_SERVICE_URL
+              value: "{{ .Values.embedSaveOpenAi.RECORD_SERVICE_URL }}"
+            - name: SERVICE_AUTH_TOKEN
+              valueFrom:
+                secretKeyRef:
+                  name: service-auth-token
+                  key: service-auth-token

@@ -1,0 +1,47 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: {{.Values.embedCreateImageOpenai.name}}
+  namespace: {{.Values.namespace}}
+  labels:
+    app: {{.Values.embedCreateImageOpenai.name}}
+spec:
+  replicas: {{.Values.embedCreateImageOpenai.replicas}}
+  selector:
+    matchLabels:
+      app: {{.Values.embedCreateImageOpenai.name}}
+  template:
+    metadata:
+      labels:
+        app: {{.Values.embedCreateImageOpenai.name}}
+    spec:
+      containers:
+        - name: {{.Values.embedCreateImageOpenai.name}}
+          image: "{{ .Values.embedCreateImageOpenai.image.repository }}:{{ .Values.embedCreateImageOpenai.image.tag }}"
+          imagePullPolicy: {{.Values.embedCreateImageOpenai.image.pullPolicy}}
+          ports:
+            - containerPort: {{.Values.embedCreateImageOpenai.service.port}}
+          env:
+            - name: GO_ENV
+              value: "{{ .Values.embedCreateImageOpenai.GO_ENV }}"
+            - name: SERVER_PORT
+              value: "{{ .Values.embedCreateImageOpenai.SERVER_PORT }}"
+            - name: WORKER_NAME
+              value: "{{ .Values.embedCreateImageOpenai.WORKER_NAME }}"
+            - name: NATS_URL
+              value: "{{ .Values.embedCreateImageOpenai.NATS_URL }}"
+            - name: NATS_DLQ_SUBJECT
+              value: "{{ .Values.embedCreateImageOpenai.NATS_DLQ_SUBJECT }}"
+            - name: STREAM
+              value: "{{ .Values.embedCreateImageOpenai.STREAM }}"
+            - name: SUBJECTS
+              value: "{{ .Values.embedCreateImageOpenai.SUBJECTS }}"
+            - name: REPLY_SUBJECT
+              value: "{{ .Values.embedCreateImageOpenai.REPLY_SUBJECT }}"
+            - name: MAX_DELIVERY_ATTEMPTS
+              value: "{{ .Values.embedCreateImageOpenai.MAX_DELIVERY_ATTEMPTS }}"
+            - name: EAK_ENCRYPTION_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: eak-encryption-key
+                  key: eak-encryption-key

@@ -144,6 +144,65 @@ nats:
   service:
     name: nats
     port: 4222
+embedCreateImageOpenai:
+  name: embedCreateImageOpenai
+  replicas: 1
+  image:
+    repository: alo42/embed-create-image-openai
+    pullPolicy: Always
+    tag: development-1.0.0
+  service:
+    name: embedCreateImageOpenai
+    port: 5005
+  SERVER_PORT: 5005
+  GO_ENV: development
+  WORKER_NAME: "embed-create-image-openai-worker"
+  NATS_URL: "nats://nats:4222"
+  NATS_DLQ_SUBJECT: ""
+  STREAM: 
+  SUBJECTS: 
+  REPLY_SUBJECT: 
+  MAX_DELIVERY_ATTEMPTS: 5
+embedCreateTextOpenai:
+  name: embedCreateTextOpenai
+  replicas: 1
+  image:
+    repository: alo42/embed-create-text-openai
+    pullPolicy: Always
+    tag: development-1.0.0
+  service:
+    name: embedCreateTextOpenai
+    port: 5006
+  SERVER_PORT: 5006
+  GO_ENV: development
+  WORKER_NAME: "embed-create-text-openai-worker"
+  NATS_URL: "nats://nats:4222"
+  NATS_DLQ_SUBJECT: ""
+  STREAM: 
+  SUBJECTS: 
+  REPLY_SUBJECT: 
+  MAX_DELIVERY_ATTEMPTS: 5
+embedSaveOpenai:
+  name: embedSaveOpenai
+  replicas: 1
+  image:
+    repository: alo42/embed-save-openai
+    pullPolicy: Always
+    tag: development-1.0.0
+  service:
+    name: embedSaveOpenai
+    port: 5007
+  SERVER_PORT: 5007
+  GO_ENV: development
+  WORKER_NAME: "embed-save-openai-worker"
+  PUBLIC_GATEWAY_URL: "http://gateway:5000"
+  RECORD_SERVICE_URL: "record:5000"
+  NATS_URL: "nats://nats:4222"
+  NATS_DLQ_SUBJECT: ""
+  STREAM: 
+  SUBJECTS: 
+  REPLY_SUBJECT: 
+  MAX_DELIVERY_ATTEMPTS: 5
 ingress:
   name: ycb-development
   ingressClassName: nginx
