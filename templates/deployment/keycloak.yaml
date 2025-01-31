@@ -37,6 +37,8 @@ spec:
               value: "{{ .Values.keycloak.KEYCLOAK_ADMIN }}"
             - name: KC_HOSTNAME
               value: "{{ .Values.keycloak.KC_HOSTNAME }}"
+            - name: KC_LOG_LEVEL
+              value: "{{ .Values.keycloak.KC_LOG_LEVEL }}"
             - name: KC_DB_URL
               valueFrom:
                 secretKeyRef:

@@ -133,6 +133,7 @@ keycloak:
   KC_HTTP_ENABLED: "true"
   KEYCLOAK_ADMIN: admin
   KC_HOSTNAME: 'https://development.yourcommonbase.com/keycloak'
+  KC_LOG_LEVEL: debug
 nats:
   name: nats
   replicas: 1
